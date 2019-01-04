@@ -1,0 +1,104 @@
+
+<html>
+  <head>
+	<title>Form</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+
+  <style> 
+    
+
+    p{
+	   font-size: 1.0em;
+	   margin-bottom: 15px;
+    }
+
+    #page-wrap{
+	   width: 600px;
+	   background: white;
+	   padding: 20px 50px 20px 50px;
+	   margin: 20px auto;
+	   min-height: 500px;
+	   height: auto !important;
+	   height: 500px;
+    }
+
+    #contact-area{
+	   width: 500px;
+	   margin-top: 25px;
+    }
+
+    #contact-area input, #contact-area textarea{
+	   padding: 5px;
+	   width: 350px;
+	   font-family: Helvetica, sans-serif;
+	   font-size: 1.2em;
+	   margin: 0px 0px 0px 0px;
+	   border: 2px solid #ccc;
+    }
+
+    #contact-area textarea{
+	   height: 90px;
+    }
+
+    #contact-area textarea:focus, #contact-area input:focus{
+	   border: 2px solid #500;
+    }
+
+    #contact-area input.submit-button{
+	   width: 100px;
+	   float: right;
+    }
+
+    label{
+	   float: left;
+	   text-align: right;
+	   margin-right: 15px;
+	   width: 100px;
+	   padding-top: 5px;
+	   font-size: 1.2em;
+    }
+</style>
+
+	<div id="page-wrap">
+
+		<p><h2>Hello. Kindly fill in the information below </h2></p>
+		
+		<script>
+		function savePersonsDetails(){
+		
+		    var fname = document.getElementById('fname').value;
+			console.log(fname);
+			
+			// $.post    reg.php
+			
+		}
+		</script>
+		<div id="contact-area">
+			
+				<label for="fname">First Name:</label>
+				<br><input type="text" name="fname" id="fname" /></br>
+				
+				<br><label for="lname">Last Name:</label></br>
+				<input type="text" name="lname" id="lname" />
+	
+				<br><label for="tel">Phone:</label></br>
+				<input type="text" name="tel" id="tel" />
+				
+				<br><label for="address">Address:</label></br>
+				<textarea name="address" rows="20" cols="20" id="address"></textarea>
+				<br><br>
+	
+	            <button onclick="savePersonsDetails()">Save </button>
+	
+			<div style="clear: both;"></div>
+			
+					
+		</div>
+	
+	</div>
+
+</body>
+
+</html>

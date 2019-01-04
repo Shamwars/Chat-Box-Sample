@@ -1,0 +1,25 @@
+<html>
+<title>Chatterbot</title>
+<head>Chatterbot v.1.0</head>
+<body>
+<h1> Welcome </h1>
+<img src="chatbot.jpg">
+
+<script>
+function countDown(secs,elem) {
+	var element = document.getElementById(elem);
+	element.innerHTML = "Please wait for "+secs+" seconds";
+	if(secs < 1) {
+		clearTimeout(timer);
+		
+		window.location= 'chatterbot.html';
+	}
+	secs--;
+	var timer = setTimeout('countDown('+secs+',"'+elem+'")',1000);
+}
+</script>
+<div id="status"></div>
+<script>countDown(5,"status");</script>
+
+</body>
+</html>

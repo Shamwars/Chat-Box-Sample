@@ -1,0 +1,213 @@
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+ <html>
+  <head></head>
+   <body>
+  
+   <style type="text/css">
+    
+	<!--CSS-->
+     
+	 centered {
+         position: fixed;
+         top: 50%;
+         left: 50%;
+     }
+     body{
+	    font-family:arial, sans-serif;
+        margin:o auto;
+	    background-color:#f2f2f2;
+     }
+     #header{
+        width:48.80%;
+        height:60px;
+		
+	    
+     }
+	 #header>h1{
+	    padding:10px;
+	    width:500px;
+	    margin:0px auto;
+	    color:black;
+	 }
+	 
+	 #textarea{
+	    width:659px;
+		min-height:500px;
+		margin:0px auto;
+		margin-top:20px;
+		background-color:white;
+		border:1px solid :#333;
+	 }
+	 #msg{
+	    width:659px;
+		margin:0px auto;
+	 }
+	 textarea{
+	     resize:none;
+		 width:659px;
+	 }
+	 
+	 <div id="main">
+	
+     </style>
+	 <!--Setting up div tags and iframes-->	
+       <div id="main">  
+       <div id = "header"><h1 align = "center">Chatter Bot v. 1.0 </h1></div></align>
+	   <textarea id="log" name="log" rows="30" cols="90"></textarea>
+       <p>
+       <input type="text" id="msg" "width:100">
+	   <p class ="logout"><a id="exit" href="#">Exit Chat</a></p>
+	  
+	   <div id="divOne" style="display:none">
+	   <iframe id="1" width="600" height="520" frameborder="0" style="border:0; position:relative; top: -603px; left: 700px" src="https://www.campbells.com/kitchen/recipes/quick-pepper-steak/"></iframe>
+	   </div>
+	   <div id="divTwo" style="display:none">
+	   <iframe id="2" width="600" height="520" frameborder="0" style="border:0; position:relative; top: -603px; left: 700px" src="https://www.campbells.com/kitchen/recipes/easy-chicken-pot-pie/"></iframe>
+       </div>	  
+	   <div id="divThree" style="display:none">
+	   <iframe id="3" width="600" height="520" frameborder="0" style="border:0; position:relative; top: -603px; left: 700px" src="http://www.rte.ie/sport/"></iframe>
+	   </div>
+	   <div id="divFour" style="display:none">
+	   <iframe id="4" width="600" height="520" frameborder="0" style="border:0; position:relative; top: -603px; left: 700px" src="http://www.rte.ie/business/"></iframe>
+	   </div>
+	   <div id="divFive" style="display:none">
+	   <iframe id="5" width="600" height="520" frameborder="0" style="border:0; position:relative; top: -603px; left: 700px" src="http://www.rte.ie/entertainment/"></iframe>
+	   </div>
+	   <div id="divSix" style="display:none">
+	   <iframe id="6" width="600" height="520" frameborder="0" style="border:0; position:relative; top: -603px; left: 700px" src="form.html"></iframe>
+	   </div>
+	   </div>
+	
+	<script>
+
+
+    var currentMode = '';
+
+       function output(msg){
+     
+       // capture the output of the textarea
+       var currentlog = $("textarea#log").val()
+                
+       // Set the value into the text area
+       $("textarea#log").val(currentlog + '\n ' +'Robot:' +msg);
+       }
+       
+	   function parseCommand(cmd){
+
+          if(currentMode == 'cooking'){
+              output('what do you have?')
+		  		              
+          if(cmd == 'stop cooking'){
+              output('ok no more cooking');
+              currentMode = '';
+          }
+			  else if(currentMode == 'news'){
+			      output("");
+			  }
+			       
+          } 
+		  else{
+		      if(cmd.includes("hello") || cmd.includes("Hello") || cmd.includes("HELLO") || cmd.includes("hi there") || cmd.includes("Hi there") || cmd.includes("Hi") || cmd.includes("hi")){
+               output("Hello"),      
+               output("What would you like to do today?")
+			   }
+			   else if(cmd.includes('what can i do?') || cmd.includes('What can I do?')){
+			       output('You can cook or reading news');
+			   }
+			   else if(cmd.includes("beef")){
+			       var text = "Black Pepper Steak";
+                   var url = "https://www.campbells.com/kitchen/recipes/quick-pepper-steak/";
+                   var html = "<a href='" + url + "'>" + text +"</a>" ;
+                   html === "<a href='https://www.campbells.com/kitchen/recipes/quick-pepper-steak/'>Black Pepper Steak</a>" //true
+				   output("Great! You can cook black pepper steak maybe. I've open a new tab for the recipe for you!"),
+                   output(window.open(url));
+               }
+			   else if(cmd.includes("chicken")){
+			       var text = "Chicken Pie";
+                   var url = "https://www.campbells.com/kitchen/recipes/easy-chicken-pot-pie/";
+                   var html = "<a href='" + url + "'>" + text +"</a>" ;
+                   html === "<a href='https://www.campbells.com/kitchen/recipes/easy-chicken-pot-pie/'>Chicken Pie</a>" //true
+				   output("Great! You can cook black pepper steak maybe. I've open a new tab for the recipe for you!"),
+                   output(window.open(url));
+               }
+               if(cmd.includes("cooking")){
+                   // Set the value into the text area
+                   output("Very nice? Tell me what do you want to cook!");
+			   }
+			   else if(cmd.includes("news") || cmd.includes("read news")){
+			       output("Would you like to read Sports, Business or Entertainment section?");
+			   }
+			   if(cmd == "sport"){
+				   var text = "Sport";
+                   var url = "http://www.rte.ie/sport/";
+                   var html = "<a href='" + url + "'>" + text +"</a>" ;
+                   html === "<a href='http://www.rte.ie/sport/'>Sport</a>" //true
+				       output("Great! I've opened the sport section for you!"),
+                  	   output(window.open(url));
+				   }
+				   else if(cmd == "business"){
+					   var text = "Business";
+                       var url = "http://www.rte.ie/news/business/";
+                       var html = "<a href='" + url + "'>" + text +"</a>" ;
+                       html === "<a href='http://www.rte.ie/news/business/'>Business</a>" //true
+				           output("Great! I've opened the business section for you!"),
+                  		   output(window.open(url));
+					   }
+					   else if(cmd == "entertainment"){
+					        var text = "Entertainment";
+                            var url = "http://www.rte.ie/entertainment/";
+                            var html = "<a href='" + url + "'>" + text +"</a>" ;
+                            html === "<a href='http://www.rte.ie/entertainment/'>Entertainment</a>" //true
+				                output("Great! I've opened the entertainment section for you!"),
+                  				output(window.open(url));
+					        }
+							if(cmd =="who am i?" || cmd =="Who am I?"){
+							     var text = "My Profile";
+			                     var url = "form.html";
+				                 var html = "<a href='" + url + "'>" + text +"</a>";
+				                 html == "<a href='form.html'>My Profile</a>";
+				                 output(window.open(url));
+			                }									   
+													  		              
+                    }
+
+           }
+
+   // bind on a key up (or when its released)
+   $("#msg").on('keyup', function (e) {
+      // if its the enter key, (called key 13)
+      if (e.keyCode == 13) {
+        // get message from the text field
+        var txt = document.getElementById('msg').value;
+        var currentlog = $("textarea#log").val()
+        // Set the value into the text area
+        $("textarea#log").val(currentlog + '\n ' +'Me:' +txt);
+        // call the main brain       
+        parseCommand(txt);
+        // wipe the text field        
+        document.getElementById('msg').value = '';
+    }
+ });
+
+    $(document).ready(function(){
+	//If user wants to end session
+	$("#exit").click(function(){
+		var exit = confirm("Are you sure you want to end the session?");
+		if(exit==true){window.location = 'index.html';}		
+	    });
+    });
+
+    if (!Date.now) {
+    Date.now = function now() {
+        return new Date().getTime();
+        };
+    }
+ 
+  </script>
+  </body>
+  </div>
+</html>
+		
+
